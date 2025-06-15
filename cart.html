@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - Glow Spa</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+
+    <header>
+        <div class="glow-logo-wrapper">
+          <span class="logo-text" style="font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #6A5D63;">Glow Spa</span>
+          <span class="signature-line" style="font-family: 'Quicksand', sans-serif; font-size: 1rem; color: #6A5D63;">Serenity & Beauty</span>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="audio-control">
+            <audio id="spaMusic" loop>
+              <source src="spa-music.mp3" type="audio/mp3">
+              Your browser does not support the audio element.
+            </audio>
+            <button id="toggleMusic">
+              <i class="fas fa-volume-up"></i>
+            </button>
+          </div>
+          
+      </header>
+      
+
+  <section class="cart-section">
+    <h2>Your Cart</h2>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-summary">
+      <p>Total: <span id="cart-total">$0</span></p>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const cartContainer = document.getElementById("cart-items");
+      const cartTotal = document.getElementById("cart-total");
+
+      const cart = JSON.parse(localStorage.getItem("glowCart")) || [];
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+        cartTotal.textContent = "$0";
+        return;
+      }
+
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const serviceBox = document.createElement("div");
+        serviceBox.classList.add("cart-item");
+
+        const image = document.createElement("img");
+        image.src = `images/${item.title.toLowerCase().replace(/\s+/g, '')}.png`;
+        image.alt = item.title;
+        image.classList.add("cart-image");
+
+        const infoWrapper = document.createElement("div");
+        infoWrapper.classList.add("cart-info");
+
+        const title = document.createElement("h4");
+        title.textContent = item.title;
+
+        const price = document.createElement("p");
+        price.textContent = `$${item.price}`;
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Remove";
+        deleteBtn.classList.add("remove-btn");
+        deleteBtn.onclick = function () {
+          removeItem(index);
+        };
+
+        infoWrapper.appendChild(title);
+        infoWrapper.appendChild(price);
+        serviceBox.appendChild(image);
+        serviceBox.appendChild(infoWrapper);
+        serviceBox.appendChild(deleteBtn);
+        cartContainer.appendChild(serviceBox);
+
+        total += parseFloat(item.price);
+      });
+
+      cartTotal.textContent = `$${total.toFixed(2)}`;
+
+      function removeItem(index) {
+        cart.splice(index, 1);
+        localStorage.setItem("glowCart", JSON.stringify(cart));
+        location.reload();
+      }
+    });
+  </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const music = document.getElementById("spaMusic");
+      const toggleBtn = document.getElementById("toggleMusic");
+  
+      let isPlaying = false;
+  
+      toggleBtn.addEventListener("click", function () {
+        if (isPlaying) {
+          music.pause();
+          toggleBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        } else {
+          music.play();
+          toggleBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+        }
+        isPlaying = !isPlaying;
+      });
+    });
+  </script>
+  
+</body>
+</html>
+```
+

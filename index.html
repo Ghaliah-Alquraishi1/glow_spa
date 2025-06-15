@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Glow Spa</title>
+
+
+  <!-- External Stylesheets & Fonts -->
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+ 
+</head>
+
+
+<body>
+
+    <!-- Header Section with Logo, Navigation and Icons -->
+  <header>
+    <div class="glow-logo-wrapper">
+      <span class="logo-text">Glow Spa</span>
+      <span class="signature-line">Serenity & Beauty</span>
+    </div>
+  
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+      <!-- Cart and Audio Control Icons -->
+    <div class="header-icons">
+      <a href="cart.html" class="cart-link">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+      </a>
+    
+      <div class="audio-control">
+        <audio id="spaMusic" loop>
+          <source src="spa-music.mp3" type="audio/mp3">
+        </audio>
+        <button id="toggleMusic">
+          <i class="fas fa-volume-up"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  
+
+  <!-- Hero Section with Background Slideshow -->
+  <section id="home" class="hero">
+   <img src="images/slide1.png" class="hero-slideshow" style="animation-delay: 0s;">
+<img src="images/slide2.png" class="hero-slideshow" style="animation-delay: 5s;">
+<img src="images/slide3.png" class="hero-slideshow" style="animation-delay: 10s;">
+<img src="images/slide4.png" class="hero-slideshow" style="animation-delay: 15s;">
+<img src="images/slide5.png" class="hero-slideshow" style="animation-delay: 20s;">
+
+    <!-- Overlay for darkening the background -->
+     <div class="overlay"></div>
+
+         <!-- Main heading content -->
+    <div class="hero-content" data-aos="fade-up">
+      <h2 data-aos="fade-right">Where Serenity Meets Beauty</h2>
+      <p data-aos="fade-left">Relax, Rejuvenate, and Rediscover Your Glow.</p>
+      <span class="highlight">Every moment at Glow Spa is crafted to revive your spirit and enhance your beauty.</span>
+      <a href="#services" class="btn" data-aos="zoom-in">Explore Services</a>
+    </div>
+  </section>
+
+  <!-- Search & Sort -->
+  <div class="search-sort-wrapper">
+    <input type="text" id="searchInput" placeholder="Search services..." />
+    <select id="sortSelect">
+      <option value="">Sort by</option>
+      <option value="name-asc">Name (A-Z)</option>
+      <option value="name-desc">Name (Z-A)</option>
+      <option value="price-asc">Price (Low to High)</option>
+      <option value="price-desc">Price (High to Low)</option>
+    </select>
+    <button id="clearFilters">Clear All</button>
+  </div>
+  <section id="services" class="services-grid">
+    <div class="service-card" data-aos="fade-up">
+      <img src="images/massagetherapy.png" alt="Massage Therapy">
+      <h4>Massage Therapy</h4>
+      <p>Relaxing full-body massage with essential oils to relieve tension.</p>
+      <button class="book-btn"
+        onclick="showDetails('Massage Therapy', 'Relaxing full-body massage with essential oils to relieve tension.', '$70 per hour')">
+        Book Now
+      </button>
+    </div>
+
+    <!--service-->
+      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+      <img src="images/facialtreatment.png" alt="Facial Treatment">
+      <h4>Facial Treatment</h4>
+      <p>Deep cleansing facial using organic products for glowing skin.</p>
+      <button class="book-btn"
+        onclick="showDetails('Facial Treatment', 'Deep cleansing facial using organic products for glowing skin.', '$50 per session')">
+        Book Now
+      </button>
+    </div>
+  
+    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+      <img src="images/bodyscrub.png" alt="Body Scrub">
+      <h4>Body Scrub</h4>
+      <p>Exfoliating body treatment to leave your skin soft and smooth.</p>
+      <button class="book-btn"
+        onclick="showDetails('Body Scrub', 'Exfoliating body treatment to leave your skin soft and smooth.', '$45 per session')">
+        Book Now
+      </button>
+    </div>
+  
+    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+      <img src="images/moroccanhammam.png" alt="Moroccan Hammam">
+      <h4>Moroccan Hammam</h4>
+      <p>Traditional steam and exfoliation ritual for deep cleansing and radiant skin.</p>
+      <button class="book-btn"
+        onclick="showDetails('Moroccan Hammam', 'Traditional steam and exfoliation ritual for deep cleansing and radiant skin.', '$80 per session')">
+        Book Now
+      </button>
+    </div>
+  
+    <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+      <img src="images/hairtreatment.png" alt="Hair Treatment">
+      <h4>Hair Treatment</h4>
+      <p>Revitalizing hair care using natural oils and deep nourishment masks.</p>
+      <button class="book-btn"
+        onclick="showDetails('Hair Treatment', 'Revitalizing hair care using natural oils and deep nourishment masks.', '$65 per session')">
+        Book Now
+      </button>
+    </div>
+  
+    <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+      <img src="images/manicure&pedicure.png" alt="Manicure & Pedicure">
+      <h4>Manicure & Pedicure</h4>
+      <p>Complete hand and foot care with gentle exfoliation and polish.</p>
+      <button class="book-btn"
+        onclick="showDetails('Manicure & Pedicure', 'Complete hand and foot care with gentle exfoliation and polish.', '$45 per session')">
+        Book Now
+      </button>
+    </div>
+  
+    <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+      <img src="images/saunasession.png" alt="Sauna Session">
+      <h4>Sauna Session</h4>
+      <p>Relax and detoxify in our private dry or steam sauna rooms.</p>
+      <button class="book-btn"
+        onclick="showDetails('Sauna Session', 'Relax and detoxify in our private dry or steam sauna rooms.', '$30 per session')">
+        Book Now
+      </button>
+    </div>
+  
+    <div class="service-card" data-aos="fade-up" data-aos-delay="700">
+      <img src="images/aromatherapy.png" alt="Aromatherapy">
+      <h4>Aromatherapy</h4>
+      <p>Essential oil massage to ease stress, tension, and lift your mood.</p>
+      <button class="book-btn"
+        onclick="showDetails('Aromatherapy', 'Essential oil massage to ease stress, tension, and lift your mood.', '$35 per session')">
+        Book Now
+      </button>
+    </div>
+  
+    <div class="service-card" data-aos="fade-up" data-aos-delay="800">
+      <img src="images/steamroom.png" alt="Steam Room">
+      <h4>Steam Room</h4>
+      <p>Cleanse your pores and refresh your body in a calming steam session.</p>
+      <button class="book-btn"
+        onclick="showDetails('Steam Room', 'Cleanse your pores and refresh your body in a calming steam session.', '$30 per session')">
+        Book Now
+      </button>
+    </div>
+  </section>
+
+  <!-- Modal for Service Details -->
+<div id="serviceModal">
+  <div class="modal-content">
+    <h2 id="modalTitle"></h2>
+    <p id="modalDescription"></p>
+    <p id="modalPrice" style="font-weight:bold; color:#6A5D63;"></p>
+
+    <div class="modal-buttons">
+      <button class="modal-btn" id="addToCartFromModal">Add to Cart</button>
+      <button class="modal-btn" onclick="document.getElementById('serviceModal').style.display='none'">Close</button>
+    </div>
+  </div>
+</div>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <h2><i class="fas fa-spa"></i> About <span class="about-highlight">Glow Spa</span></h2>
+    <p>Glow Spa was created as a haven of peace and rejuvenation. Our philosophy merges <strong>holistic wellness</strong> and <strong>luxury treatments</strong> in an environment designed to calm your body and spirit.</p>
+    <div class="about-icons">
+      <div class="about-icon" data-aos="fade-up">
+        <i class="fas fa-leaf"></i>
+        <h4>Holistic Approach</h4>
+        <p>Combining mind, body, and spirit in every treatment we offer.</p>
+      </div>
+      <div class="about-icon" data-aos="fade-up" data-aos-delay="100">
+        <i class="fas fa-hand-sparkles"></i>
+        <h4>Expert Care</h4>
+        <p>Our professional team brings years of experience and personal attention.</p>
+      </div>
+      <div class="about-icon" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-heart"></i>
+        <h4>Relax & Restore</h4>
+        <p>We ensure you leave glowing, refreshed, and totally rebalanced.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <h2><i class="fas fa-envelope-open-text"></i> Get in Touch</h2>
+    <form action="#" method="POST" class="contact-form">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name..." required>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" placeholder="example@email.com" required>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Write your message..." rows="6" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer section -->
+  <footer>
+    <p>&copy; 2025 Glow Spa. All rights reserved.</p>
+    <div>
+      <a href="#" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+      <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+      <a href="#"><i class="fab fa-whatsapp fa-lg"></i></a>
+    </div>
+  </footer>
+
+    <!-- External Scripts -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+  <script src="script.js"></script>
+  
+</body>
+</html>
